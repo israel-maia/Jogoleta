@@ -1,21 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import {SignIn} from './src/screens/SignIn'
+import { useFonts } from 'expo-font';
+import { Inter_400Regular, Inter_500Medium  } from '@expo-google-fonts/inter';
+import AppLoading from 'expo-app-loading'
+
+import {
+Rajdhani_500Medium,
+Rajdhani_700Bold
+} from '@expo-google-fonts/rajdhani';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text style={{color:"#74aba6"}}>fala meus nobres</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  const [fontsLoaded] = useFonts({
+    Inter_400Regular,
+    Inter_500Medium,
+    Rajdhani_500Medium,
+    Rajdhani_700Bold,
+  });
+  
+  if (!fontsLoaded) {
+    return <AppLoading/>;
+  }
+  return <SignIn />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#533a7a',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
