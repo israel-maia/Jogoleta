@@ -1,12 +1,13 @@
 import React from 'react'
-import {SignIn} from './src/screens/SignIn'
+import { StatusBar, View } from 'react-native';
+import { SignIn } from './src/screens/SignIn'
 import { useFonts } from 'expo-font';
-import { Inter_400Regular, Inter_500Medium  } from '@expo-google-fonts/inter';
+import { Inter_400Regular, Inter_500Medium } from '@expo-google-fonts/inter';
 import AppLoading from 'expo-app-loading'
-
+import { Background } from './src/components/Background';
 import {
-Rajdhani_500Medium,
-Rajdhani_700Bold
+  Rajdhani_500Medium,
+  Rajdhani_700Bold
 } from '@expo-google-fonts/rajdhani';
 
 export default function App() {
@@ -16,9 +17,19 @@ export default function App() {
     Rajdhani_500Medium,
     Rajdhani_700Bold,
   });
-  
+
   if (!fontsLoaded) {
-    return <AppLoading/>;
+    return <AppLoading />;
   }
-  return <SignIn />;
+  return (
+    <Background>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor="transparent"
+        translucent
+      />
+      <SignIn />
+    </Background>
+
+  );
 }

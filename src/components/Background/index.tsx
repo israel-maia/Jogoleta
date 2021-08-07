@@ -1,10 +1,22 @@
-import React from "react";
-import { View , Text, Image} from 'react-native';
+import React, { ReactNode } from "react";
+import { LinearGradient } from "expo-linear-gradient";
 
-export function SignIn(){
+import { theme } from "../../global/styles/theme";
+import { styles } from "./style"
+
+type Props = {
+    children: ReactNode
+};
+
+
+export function Background({ children }: Props) {
+    const { secondary80, secondary100 } = theme.colors;
     return (
-        <View>
-            <Text> Eai galerinha!</Text>
-        </View>
-    )
+        <LinearGradient
+            style={styles.container}
+            colors={[secondary80, secondary100 ]}
+        >
+        { children }
+        </LinearGradient >
+    );
 }
